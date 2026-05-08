@@ -525,6 +525,18 @@
             transition: transform 420ms ease;
         }
 
+        .project-media img + .mockup {
+            display: none;
+        }
+
+        .project-media img.is-missing {
+            display: none;
+        }
+
+        .project-media img.is-missing + .mockup {
+            display: grid;
+        }
+
         .project:hover .project-media img {
             transform: scale(1.04);
         }
@@ -1267,8 +1279,9 @@
 
                 <div class="projects-grid">
                     <article class="project reveal">
-                        <div class="project-media" aria-hidden="true">
-                            <div class="mockup mockup-os">
+                        <div class="project-media">
+                            <img src="projeto-os.png" alt="Print do aplicativo de ordens de serviço" data-fallback>
+                            <div class="mockup mockup-os" aria-hidden="true">
                                 <div class="mockup-logo"></div>
                                 <div class="mockup-toolbar"></div>
                                 <div class="mockup-table">
@@ -1293,8 +1306,9 @@
                     </article>
 
                     <article class="project reveal">
-                        <div class="project-media" aria-hidden="true">
-                            <div class="mockup mockup-site">
+                        <div class="project-media">
+                            <img src="projeto-site.png" alt="Print do site institucional de transporte executivo" data-fallback>
+                            <div class="mockup mockup-site" aria-hidden="true">
                                 <div class="mockup-site-nav"></div>
                                 <div class="mockup-site-title"></div>
                                 <div class="mockup-site-copy"></div>
@@ -1318,8 +1332,9 @@
                     </article>
 
                     <article class="project reveal">
-                        <div class="project-media" aria-hidden="true">
-                            <div class="mockup mockup-login">
+                        <div class="project-media">
+                            <img src="projeto-frotas-login.png" alt="Print da tela de login do sistema de frotas" data-fallback>
+                            <div class="mockup mockup-login" aria-hidden="true">
                                 <div class="mockup-logo wide"></div>
                                 <div class="mockup-line"></div>
                                 <div class="mockup-input"></div>
@@ -1343,8 +1358,9 @@
                     </article>
 
                     <article class="project reveal">
-                        <div class="project-media" aria-hidden="true">
-                            <div class="mockup mockup-dashboard">
+                        <div class="project-media">
+                            <img src="projeto-frotas-dashboard.png" alt="Print do dashboard administrativo do sistema de frotas" data-fallback>
+                            <div class="mockup mockup-dashboard" aria-hidden="true">
                                 <div class="mockup-sidebar"></div>
                                 <div class="mockup-cards">
                                     <span></span><span></span><span></span><span></span>
@@ -1368,8 +1384,9 @@
                     </article>
 
                     <article class="project reveal">
-                        <div class="project-media" aria-hidden="true">
-                            <div class="mockup mockup-xml">
+                        <div class="project-media">
+                            <img src="projeto-validador-xml.png" alt="Print do validador de XML em Python" data-fallback>
+                            <div class="mockup mockup-xml" aria-hidden="true">
                                 <div class="mockup-folder"></div>
                                 <div class="mockup-dropzone"></div>
                                 <div class="mockup-actions">
@@ -1451,6 +1468,7 @@
         const menuButton = document.querySelector(".menu-toggle");
         const navLinks = document.querySelectorAll(".nav-links a");
         const revealItems = document.querySelectorAll(".reveal");
+        const projectImages = document.querySelectorAll("img[data-fallback]");
 
         function setScrolledHeader() {
             header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -1480,6 +1498,14 @@
         }, { threshold: 0.14 });
 
         revealItems.forEach((item) => revealObserver.observe(item));
+        projectImages.forEach((image) => {
+            image.addEventListener("error", () => {
+                image.classList.add("is-missing");
+            });
+            if (image.complete && image.naturalWidth === 0) {
+                image.classList.add("is-missing");
+            }
+        });
 
         setScrolledHeader();
         window.addEventListener("scroll", setScrolledHeader, { passive: true });
