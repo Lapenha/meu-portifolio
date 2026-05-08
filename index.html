@@ -605,6 +605,187 @@
             width: 78%;
         }
 
+        .mockup-logo {
+            width: 112px;
+            height: 34px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, rgba(77, 171, 247, 0.9), rgba(255, 255, 255, 0.18));
+        }
+
+        .mockup-logo.wide {
+            width: 52%;
+            height: 48px;
+            margin-inline: auto;
+        }
+
+        .mockup-toolbar,
+        .mockup-table,
+        .mockup-input,
+        .mockup-button,
+        .mockup-dropzone {
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .mockup-toolbar {
+            min-height: 34px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.16), rgba(77, 171, 247, 0.22));
+        }
+
+        .mockup-table {
+            min-height: 120px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            overflow: hidden;
+        }
+
+        .mockup-table span {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mockup-login {
+            align-content: center;
+            justify-items: center;
+            background: linear-gradient(90deg, #084981 0 24%, rgba(255, 255, 255, 0.08) 24% 76%, #084981 76%);
+        }
+
+        .mockup-input {
+            width: 44%;
+            min-height: 24px;
+            background: rgba(255, 255, 255, 0.88);
+        }
+
+        .mockup-button {
+            width: 80px;
+            min-height: 34px;
+            justify-self: end;
+            margin-right: 24%;
+            background: #0b5cad;
+        }
+
+        .mockup-site {
+            position: relative;
+            align-content: start;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, rgba(0, 33, 62, 0.92), rgba(15, 63, 105, 0.68), rgba(104, 45, 45, 0.54)),
+                linear-gradient(135deg, #093b5d, #111c31 55%, #301c24);
+        }
+
+        .mockup-site::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, transparent 0 47%, rgba(247, 201, 72, 0.52) 48% 50%, transparent 51%),
+                linear-gradient(25deg, transparent 0 52%, rgba(247, 201, 72, 0.48) 53% 55%, transparent 56%);
+            opacity: 0.8;
+        }
+
+        .mockup-site-nav,
+        .mockup-site-title,
+        .mockup-site-copy,
+        .mockup-site-route {
+            position: relative;
+            z-index: 1;
+            border-radius: 999px;
+        }
+
+        .mockup-site-nav {
+            width: 72%;
+            min-height: 24px;
+            margin-inline: auto;
+            background: #fff7df;
+        }
+
+        .mockup-site-title {
+            width: 42%;
+            min-height: 86px;
+            margin: 14px 0 0 20%;
+            border-radius: var(--radius);
+            background: linear-gradient(180deg, #ffffff, rgba(255, 255, 255, 0.72));
+        }
+
+        .mockup-site-copy {
+            width: 34%;
+            min-height: 20px;
+            margin-left: 20%;
+            background: rgba(255, 255, 255, 0.72);
+        }
+
+        .mockup-site-route {
+            width: 100%;
+            min-height: 18px;
+            align-self: end;
+            background: #0b4777;
+        }
+
+        .mockup-dashboard {
+            grid-template-columns: 26% 1fr;
+            gap: 16px;
+            background: linear-gradient(90deg, #084981 0 26%, rgba(255, 255, 255, 0.06) 26%);
+        }
+
+        .mockup-sidebar {
+            min-height: 164px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .mockup-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            align-content: center;
+        }
+
+        .mockup-cards span {
+            min-height: 46px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+        }
+
+        .mockup-xml {
+            background: rgba(255, 255, 255, 0.96);
+        }
+
+        .mockup-folder {
+            width: 72px;
+            height: 50px;
+            justify-self: center;
+            border-radius: 6px;
+            background: linear-gradient(180deg, #ffd15c, #ffb545);
+        }
+
+        .mockup-dropzone {
+            min-height: 94px;
+            border: 2px dashed #1683ff;
+            background: rgba(22, 131, 255, 0.06);
+        }
+
+        .mockup-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .mockup-actions span {
+            min-height: 34px;
+            border-radius: var(--radius);
+            background: #1683ff;
+        }
+
+        .mockup-actions span:nth-child(2) {
+            background: #20a6b8;
+        }
+
+        .mockup-actions span:nth-child(3) {
+            background: #77818a;
+        }
+
         .contact {
             background:
                 linear-gradient(90deg, rgba(247, 201, 72, 0.12), transparent 34%),
@@ -1086,156 +1267,127 @@
 
                 <div class="projects-grid">
                     <article class="project reveal">
-                        <div class="project-media">
-                            <img src="fotositeloop.PNG" alt="Print de site institucional de transporte executivo">
+                        <div class="project-media" aria-hidden="true">
+                            <div class="mockup mockup-os">
+                                <div class="mockup-logo"></div>
+                                <div class="mockup-toolbar"></div>
+                                <div class="mockup-table">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                            <span class="project-kind">App OS</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>Aplicativo de ordens de serviço</h3>
+                            <p>
+                                Aplicação para consulta, cadastro, edição, geração de PDF e controle de ordens de serviço, com filtros por cliente, roteiro, tipo e status.
+                            </p>
+                            <div class="project-tags">
+                                <span>JavaScript</span>
+                                <span>CRUD</span>
+                                <span>PDF</span>
+                                <span>Filtros</span>
+                                <span>UI desktop</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-media" aria-hidden="true">
+                            <div class="mockup mockup-site">
+                                <div class="mockup-site-nav"></div>
+                                <div class="mockup-site-title"></div>
+                                <div class="mockup-site-copy"></div>
+                                <div class="mockup-site-route"></div>
+                            </div>
                             <span class="project-kind">Website</span>
                         </div>
                         <div class="project-body">
                             <h3>Site institucional de transporte executivo</h3>
                             <p>
-                                Landing page responsiva com identidade visual forte, navegação por seções, chamadas de contato e apresentação clara de serviços.
+                                Site moderno e responsivo com hero visual, navegação por seções, apresentação de serviços e chamadas diretas para orçamento.
                             </p>
                             <div class="project-tags">
                                 <span>HTML</span>
                                 <span>CSS</span>
                                 <span>JavaScript</span>
-                                <span>UI responsiva</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project reveal">
-                        <div class="project-media">
-                            <img src="fotomktoyssite.PNG" alt="Print de plataforma web de leilões e antiguidades">
-                            <span class="project-kind">Plataforma</span>
-                        </div>
-                        <div class="project-body">
-                            <h3>Plataforma web de leilões</h3>
-                            <p>
-                                Sistema para catálogo, operação e divulgação de leilões online, com foco em organização de lotes e experiência de compra.
-                            </p>
-                            <div class="project-tags">
-                                <span>React</span>
-                                <span>Node.js</span>
-                                <span>PostgreSQL</span>
-                                <span>Automação</span>
+                                <span>Responsivo</span>
+                                <span>Animações</span>
                             </div>
                         </div>
                     </article>
 
                     <article class="project reveal">
                         <div class="project-media" aria-hidden="true">
-                            <div class="mockup">
-                                <div class="mockup-bar"></div>
-                                <div class="mockup-grid">
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                </div>
+                            <div class="mockup mockup-login">
+                                <div class="mockup-logo wide"></div>
                                 <div class="mockup-line"></div>
-                                <div class="mockup-line"></div>
+                                <div class="mockup-input"></div>
+                                <div class="mockup-input"></div>
+                                <div class="mockup-button"></div>
                             </div>
-                            <span class="project-kind">Sistema</span>
+                            <span class="project-kind">Frotas</span>
                         </div>
                         <div class="project-body">
-                            <h3>Sistema de gestão de frota e ordens de serviço</h3>
+                            <h3>Sistema de frotas com autenticação</h3>
                             <p>
-                                Aplicação com login, painel administrativo, módulos de clientes, veículos, motoristas, estoque, financeiro, checklists e documentação.
+                                Tela de login e controle de sessão para perfis de acesso, preparando o usuário para módulos administrativos e operacionais.
                             </p>
                             <div class="project-tags">
                                 <span>Node.js</span>
                                 <span>JWT</span>
-                                <span>Dashboard</span>
-                                <span>PDF</span>
-                                <span>CRUD</span>
+                                <span>Perfis</span>
+                                <span>Segurança</span>
                             </div>
                         </div>
                     </article>
 
                     <article class="project reveal">
                         <div class="project-media" aria-hidden="true">
-                            <div class="mockup">
-                                <div class="mockup-bar"></div>
-                                <div class="mockup-line"></div>
-                                <div class="mockup-line"></div>
-                                <div class="mockup-grid">
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
+                            <div class="mockup mockup-dashboard">
+                                <div class="mockup-sidebar"></div>
+                                <div class="mockup-cards">
+                                    <span></span><span></span><span></span><span></span>
+                                    <span></span><span></span><span></span><span></span>
                                 </div>
                             </div>
-                            <span class="project-kind">Validador</span>
+                            <span class="project-kind">Dashboard</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>Dashboard administrativo de frotas</h3>
+                            <p>
+                                Painel com módulos de clientes, veículos, motoristas, ordens de serviço, abastecimentos, manutenções, financeiro, checklists e documentação.
+                            </p>
+                            <div class="project-tags">
+                                <span>Dashboard</span>
+                                <span>CRUD</span>
+                                <span>Relatórios</span>
+                                <span>Gestão</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-media" aria-hidden="true">
+                            <div class="mockup mockup-xml">
+                                <div class="mockup-folder"></div>
+                                <div class="mockup-dropzone"></div>
+                                <div class="mockup-actions">
+                                    <span></span><span></span><span></span>
+                                </div>
+                            </div>
+                            <span class="project-kind">Python</span>
                         </div>
                         <div class="project-body">
                             <h3>Validador de NF-e para IBS/CBS</h3>
                             <p>
-                                Ferramenta para validação automática de arquivos XML, leitura de pastas, processamento em lote e apoio à conferência tributária.
+                                Validador em Python para leitura de arquivos XML, seleção de pasta, processamento em lote e apoio à conferência da Reforma Tributária.
                             </p>
                             <div class="project-tags">
-                                <span>JavaScript</span>
+                                <span>Python</span>
                                 <span>XML</span>
                                 <span>Automação</span>
-                                <span>Regras fiscais</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project reveal">
-                        <div class="project-media" aria-hidden="true">
-                            <div class="mockup">
-                                <div class="mockup-bar"></div>
-                                <div class="mockup-grid">
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                </div>
-                                <div class="mockup-line"></div>
-                                <div class="mockup-line"></div>
-                            </div>
-                            <span class="project-kind">Integração</span>
-                        </div>
-                        <div class="project-body">
-                            <h3>Integrações e automações logísticas</h3>
-                            <p>
-                                Fluxos para cálculo de frete, organização operacional, consumo de APIs externas e redução de tarefas manuais repetitivas.
-                            </p>
-                            <div class="project-tags">
-                                <span>Python</span>
-                                <span>Node.js</span>
-                                <span>REST APIs</span>
-                                <span>Pandas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project reveal">
-                        <div class="project-media" aria-hidden="true">
-                            <div class="mockup">
-                                <div class="mockup-bar"></div>
-                                <div class="mockup-grid">
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                    <div class="mockup-cell"></div>
-                                </div>
-                            </div>
-                            <span class="project-kind">Dados</span>
-                        </div>
-                        <div class="project-body">
-                            <h3>Dashboards e análise operacional</h3>
-                            <p>
-                                Painéis, relatórios e rotinas de análise para transformar dados em indicadores de acompanhamento e tomada de decisão.
-                            </p>
-                            <div class="project-tags">
-                                <span>Python</span>
-                                <span>Excel</span>
-                                <span>PostgreSQL</span>
-                                <span>Relatórios</span>
+                                <span>Validação fiscal</span>
                             </div>
                         </div>
                     </article>
