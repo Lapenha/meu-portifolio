@@ -798,6 +798,33 @@
             background: #77818a;
         }
 
+        .mockup-shipping {
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            background:
+                linear-gradient(135deg, rgba(77, 171, 247, 0.18), rgba(247, 201, 72, 0.12)),
+                rgba(255, 255, 255, 0.04);
+        }
+
+        .mockup-shipping .mockup-bar {
+            grid-column: 1 / -1;
+            width: 48%;
+        }
+
+        .mockup-shipping .mockup-input {
+            width: 100%;
+            min-height: 38px;
+            background: rgba(255, 255, 255, 0.88);
+        }
+
+        .mockup-result {
+            grid-column: 1 / -1;
+            min-height: 70px;
+            border: 1px solid rgba(77, 171, 247, 0.38);
+            border-radius: var(--radius);
+            background: rgba(77, 171, 247, 0.14);
+        }
+
         .contact {
             background:
                 linear-gradient(90deg, rgba(247, 201, 72, 0.12), transparent 34%),
@@ -1296,7 +1323,7 @@
                                 Aplicação para consulta, cadastro, edição, geração de PDF e controle de ordens de serviço, com filtros por cliente, roteiro, tipo e status.
                             </p>
                             <div class="project-tags">
-                                <span>JavaScript</span>
+                                <span>Python</span>
                                 <span>CRUD</span>
                                 <span>PDF</span>
                                 <span>Filtros</span>
@@ -1349,9 +1376,10 @@
                                 Tela de login e controle de sessão para perfis de acesso, preparando o usuário para módulos administrativos e operacionais.
                             </p>
                             <div class="project-tags">
-                                <span>Node.js</span>
-                                <span>JWT</span>
+                                <span>Java</span>
+                                <span>JavaFX</span>
                                 <span>Perfis</span>
+                                <span>JWT</span>
                                 <span>Segurança</span>
                             </div>
                         </div>
@@ -1375,6 +1403,7 @@
                                 Painel com módulos de clientes, veículos, motoristas, ordens de serviço, abastecimentos, manutenções, financeiro, checklists e documentação.
                             </p>
                             <div class="project-tags">
+                                <span>Java</span>
                                 <span>Dashboard</span>
                                 <span>CRUD</span>
                                 <span>Relatórios</span>
@@ -1405,6 +1434,32 @@
                                 <span>XML</span>
                                 <span>Automação</span>
                                 <span>Validação fiscal</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-media">
+                            <img src="projeto-frete.png" alt="Print do sistema de cálculo de frete" data-fallback>
+                            <div class="mockup mockup-shipping" aria-hidden="true">
+                                <div class="mockup-bar"></div>
+                                <div class="mockup-input"></div>
+                                <div class="mockup-input"></div>
+                                <div class="mockup-result"></div>
+                            </div>
+                            <span class="project-kind">Frete</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>API e interface de cálculo de frete</h3>
+                            <p>
+                                Solução para cálculo de PAC, Loggi e Jadlog, leitura de planilhas, geração de resultados e apoio ao fluxo de envio de cotações.
+                            </p>
+                            <div class="project-tags">
+                                <span>TypeScript</span>
+                                <span>API</span>
+                                <span>Planilhas</span>
+                                <span>Logística</span>
+                                <span>Automação</span>
                             </div>
                         </div>
                     </article>
