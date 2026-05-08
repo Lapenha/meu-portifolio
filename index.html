@@ -1,13 +1,11 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alapenha Soluções em Tecnologia LTDA - Portfólio</title>
-    
-    <!-- Favicons para todos os dispositivos -->
+    <meta name="description" content="Portfólio de Murilo Alapenha, desenvolvedor full-stack especializado em aplicações web, integrações, automações, dashboards e soluções corporativas.">
+    <title>Murilo Alapenha | Desenvolvedor Full-stack</title>
+
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -15,388 +13,1324 @@
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
     <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#FFD700">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'gold': '#FFD700',
-                        'dark-gold': '#B8860B',
-                        'light-gray': '#E5E7EB',
-                        'medium-gray': '#9CA3AF',
-                        'dark-gray': '#374151'
-                    }
-                }
+    <meta name="theme-color" content="#07111f">
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #07111f;
+            --bg-2: #0c1b2d;
+            --panel: #101f33;
+            --panel-2: #13263e;
+            --line: rgba(255, 255, 255, 0.12);
+            --text: #f7fbff;
+            --muted: #aab9c9;
+            --soft: #dce7f3;
+            --brand: #f7c948;
+            --brand-2: #20c997;
+            --accent: #4dabf7;
+            --danger: #ff6b6b;
+            --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+            --radius: 8px;
+            --max: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at 12% 0%, rgba(77, 171, 247, 0.18), transparent 34rem),
+                radial-gradient(circle at 90% 8%, rgba(247, 201, 72, 0.14), transparent 32rem),
+                linear-gradient(180deg, #06101d 0%, var(--bg) 34%, #08121f 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .container {
+            width: min(100% - 40px, var(--max));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 20;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(7, 17, 31, 0.78);
+            backdrop-filter: blur(18px);
+            transition: background 240ms ease, box-shadow 240ms ease;
+        }
+
+        .site-header.is-scrolled {
+            background: rgba(7, 17, 31, 0.94);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .brand img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+        }
+
+        .brand strong,
+        .brand span {
+            display: block;
+            white-space: nowrap;
+        }
+
+        .brand strong {
+            font-size: 0.98rem;
+            letter-spacing: 0;
+        }
+
+        .brand span {
+            color: var(--muted);
+            font-size: 0.78rem;
+            margin-top: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 700;
+            padding: 10px 12px;
+            border-radius: 999px;
+            transition: color 180ms ease, background 180ms ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.08);
+            outline: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.06);
+            cursor: pointer;
+        }
+
+        .menu-toggle span,
+        .menu-toggle::before,
+        .menu-toggle::after {
+            content: "";
+            display: block;
+            width: 18px;
+            height: 2px;
+            margin: 4px auto;
+            border-radius: 999px;
+            background: currentColor;
+            transition: transform 180ms ease, opacity 180ms ease;
+        }
+
+        .menu-open .menu-toggle span {
+            opacity: 0;
+        }
+
+        .menu-open .menu-toggle::before {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        .menu-open .menu-toggle::after {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        main {
+            overflow: hidden;
+        }
+
+        section {
+            padding: 96px 0;
+            scroll-margin-top: 88px;
+        }
+
+        .hero {
+            min-height: 100svh;
+            display: grid;
+            align-items: center;
+            padding-top: 124px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 84px 0 auto;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(247, 201, 72, 0.42), transparent);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.78fr);
+            gap: 56px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--brand);
+            font-size: 0.78rem;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 2px;
+            border-radius: 999px;
+            background: currentColor;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            max-width: 890px;
+            margin-bottom: 24px;
+            font-size: clamp(2.8rem, 7vw, 6.7rem);
+            line-height: 0.96;
+            letter-spacing: 0;
+        }
+
+        .hero-lead {
+            max-width: 720px;
+            color: var(--soft);
+            font-size: clamp(1.05rem, 2vw, 1.26rem);
+        }
+
+        .hero-actions,
+        .contact-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 34px;
+        }
+
+        .btn {
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid transparent;
+            border-radius: var(--radius);
+            padding: 0 18px;
+            font-weight: 900;
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .btn:hover,
+        .btn:focus-visible {
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .btn-primary {
+            color: #09111f;
+            background: linear-gradient(135deg, var(--brand), #ffe38a);
+        }
+
+        .btn-secondary {
+            color: var(--text);
+            border-color: var(--line);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .hero-card {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035));
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .profile-photo {
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-card-body {
+            padding: 24px;
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--line);
+        }
+
+        .quick-stats div {
+            padding: 16px 14px;
+            border-right: 1px solid var(--line);
+        }
+
+        .quick-stats div:last-child {
+            border-right: 0;
+        }
+
+        .quick-stats strong {
+            display: block;
+            color: var(--brand);
+            font-size: 1.35rem;
+            line-height: 1;
+        }
+
+        .quick-stats span {
+            color: var(--muted);
+            font-size: 0.76rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .section-heading {
+            max-width: 770px;
+            margin-bottom: 42px;
+        }
+
+        .section-heading.center {
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .section-kicker {
+            color: var(--brand);
+            font-size: 0.78rem;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            margin-bottom: 16px;
+            font-size: clamp(2rem, 4vw, 3.7rem);
+            line-height: 1.04;
+            letter-spacing: 0;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+            gap: 44px;
+            align-items: start;
+        }
+
+        .about-panel {
+            position: sticky;
+            top: 108px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 28px;
+        }
+
+        .about-panel h3,
+        .timeline-item h3,
+        .project h3,
+        .skill-group h3 {
+            font-size: 1.28rem;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .about-panel p,
+        .timeline-item p,
+        .project p {
+            color: var(--muted);
+            margin-bottom: 0;
+        }
+
+        .specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            min-height: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            color: var(--soft);
+            background: rgba(255, 255, 255, 0.055);
+            padding: 6px 10px;
+            font-size: 0.83rem;
+            font-weight: 800;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 18px;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 156px minmax(0, 1fr);
+            gap: 22px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.045);
+        }
+
+        .timeline-date {
+            color: var(--brand);
+            font-size: 0.86rem;
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .skills-wrap {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .skill-group {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.045);
+            padding: 22px;
+        }
+
+        .skill-group h3 {
+            color: var(--brand);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0;
+            margin: 16px 0 0;
+            list-style: none;
+        }
+
+        .skill-list li {
+            border-radius: 999px;
+            color: var(--soft);
+            background: rgba(255, 255, 255, 0.08);
+            padding: 6px 9px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .project {
+            min-height: 100%;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.045);
+            overflow: hidden;
+            transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+        }
+
+        .project:hover {
+            transform: translateY(-6px);
+            border-color: rgba(247, 201, 72, 0.42);
+            background: rgba(255, 255, 255, 0.065);
+        }
+
+        .project-media {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(77, 171, 247, 0.22), rgba(32, 201, 151, 0.12));
+        }
+
+        .project-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 420ms ease;
+        }
+
+        .project:hover .project-media img {
+            transform: scale(1.04);
+        }
+
+        .project-kind {
+            position: absolute;
+            left: 14px;
+            top: 14px;
+            border-radius: 999px;
+            color: #08111f;
+            background: var(--brand);
+            padding: 6px 10px;
+            font-size: 0.72rem;
+            font-weight: 1000;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .project-body {
+            padding: 22px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .project-tags span {
+            color: var(--soft);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 5px 9px;
+            font-size: 0.76rem;
+            font-weight: 800;
+        }
+
+        .mockup {
+            height: 100%;
+            padding: 22px;
+            display: grid;
+            align-content: center;
+            gap: 14px;
+        }
+
+        .mockup-bar,
+        .mockup-line {
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .mockup-bar {
+            width: 44%;
+            height: 14px;
+            background: var(--brand);
+        }
+
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .mockup-cell {
+            min-height: 58px;
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .mockup-line {
+            height: 10px;
+        }
+
+        .mockup-line:nth-child(4) {
+            width: 78%;
+        }
+
+        .contact {
+            background:
+                linear-gradient(90deg, rgba(247, 201, 72, 0.12), transparent 34%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent);
+        }
+
+        .contact-box {
+            display: grid;
+            grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+            gap: 44px;
+            align-items: center;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.055);
+            padding: 34px;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            border-bottom: 1px solid var(--line);
+            padding: 0 0 12px;
+        }
+
+        .contact-item strong {
+            color: var(--brand);
+        }
+
+        .contact-item a,
+        .contact-item span {
+            color: var(--soft);
+            text-align: right;
+            overflow-wrap: anywhere;
+        }
+
+        .site-footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0;
+            color: var(--muted);
+            background: rgba(0, 0, 0, 0.16);
+        }
+
+        .footer-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 14px;
+            font-weight: 800;
+        }
+
+        .footer-links a {
+            color: var(--soft);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 620ms ease, transform 620ms ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
             }
         }
-    </script>
-    <style>
-        .gradient-gold {
-            background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
+
+        @media (max-width: 980px) {
+            .container {
+                width: min(100% - 30px, var(--max));
+            }
+
+            .hero-grid,
+            .about-grid,
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card,
+            .about-panel {
+                position: static;
+                max-width: 560px;
+            }
+
+            .skills-wrap {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
-        .text-gradient {
-            background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+
+        @media (max-width: 760px) {
+            section {
+                padding: 72px 0;
+            }
+
+            .nav {
+                min-height: 68px;
+            }
+
+            .brand img {
+                width: 44px;
+                height: 44px;
+            }
+
+            .brand span {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                inset: 68px 0 auto;
+                display: grid;
+                gap: 0;
+                border-bottom: 1px solid var(--line);
+                background: rgba(7, 17, 31, 0.98);
+                padding: 12px 15px 18px;
+                transform: translateY(-120%);
+                transition: transform 220ms ease;
+            }
+
+            .menu-open .nav-links {
+                transform: translateY(0);
+            }
+
+            .nav-links a {
+                border-radius: var(--radius);
+                padding: 14px 12px;
+            }
+
+            .hero {
+                padding-top: 104px;
+            }
+
+            .quick-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-stats div {
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .quick-stats div:last-child {
+                border-bottom: 0;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-item,
+            .footer-grid {
+                display: grid;
+            }
+
+            .contact-item a,
+            .contact-item span {
+                text-align: left;
+            }
         }
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+
+        @media (max-width: 560px) {
+            h1 {
+                font-size: 2.7rem;
+            }
+
+            .skills-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions,
+            .contact-actions,
+            .btn {
+                width: 100%;
+            }
+
+            .contact-box {
+                padding: 24px;
+            }
         }
     </style>
 </head>
-<body class="bg-black text-white font-sans">
-    <!-- Header/Navigation -->
-    <nav class="fixed w-full top-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gold/20">
-        <div class="max-w-7xl mx-auto px-6 py-6">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center">
-                    <img src="logotipoalapenha-removebg-preview.png" alt="Alapenha Soluções" class="h-36 w-auto">
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="hover:text-gold transition-colors">Início</a>
-                    <a href="#about" class="hover:text-gold transition-colors">Sobre</a>
-                    <a href="#skills" class="hover:text-gold transition-colors">Habilidades</a>
-                    <a href="#portfolio" class="hover:text-gold transition-colors">Portfólio</a>
-                    <a href="#contact" class="hover:text-gold transition-colors">Contato</a>
-                </div>
-                <button id="mobile-menu" class="md:hidden text-gold">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+<body>
+    <header class="site-header" id="top">
+        <div class="container nav">
+            <a class="brand" href="#home" aria-label="Ir para o início">
+                <img src="logotipoalapenha-removebg-preview.png" alt="Logo Alapenha">
+                <span>
+                    <strong>Murilo Alapenha</strong>
+                    <span>Full-stack Developer</span>
+                </span>
+            </a>
+
+            <nav class="nav-links" aria-label="Navegação principal">
+                <a href="#sobre">Sobre</a>
+                <a href="#experiencia">Experiência</a>
+                <a href="#tecnologias">Tecnologias</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#contato">Contato</a>
+            </nav>
+
+            <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+                <span></span>
+            </button>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black z-40 hidden">
-            <div id="mobile-menu-content" class="fixed top-0 right-0 h-full w-64 bg-black border-l border-gold/20 transform translate-x-full transition-transform duration-300 ease-in-out">
-                <div class="flex justify-between items-center p-6 border-b border-gold/20 bg-black">
-                    <div class="flex items-center">
-                        <img src="logotipoalapenha-removebg-preview.png" alt="Alapenha Soluções" class="h-16 w-auto">
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+                <div class="reveal">
+                    <span class="eyebrow">Portfólio full-stack</span>
+                    <h1>Sistemas web, integrações e automações que resolvem operação de verdade.</h1>
+                    <p class="hero-lead">
+                        Desenvolvedor full-stack com atuação em aplicações corporativas, plataformas web, dashboards,
+                        APIs REST/SOAP, automações, cloud e soluções mobile. Código limpo, entrega prática e visão de negócio.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#projetos">Ver projetos</a>
+                        <a class="btn btn-secondary" href="#contato">Falar comigo</a>
                     </div>
-                    <button id="close-mobile-menu" class="text-gold hover:text-white transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
                 </div>
-                <nav class="p-6 bg-black">
-                    <div class="flex flex-col space-y-6">
-                        <a href="#home" class="text-white hover:text-gold transition-colors text-lg font-semibold">Início</a>
-                        <a href="#about" class="text-white hover:text-gold transition-colors text-lg font-semibold">Sobre</a>
-                        <a href="#skills" class="text-white hover:text-gold transition-colors text-lg font-semibold">Habilidades</a>
-                        <a href="#portfolio" class="text-white hover:text-gold transition-colors text-lg font-semibold">Portfólio</a>
-                        <a href="#contact" class="text-white hover:text-gold transition-colors text-lg font-semibold">Contato</a>
+
+                <aside class="hero-card reveal" aria-label="Resumo profissional">
+                    <img class="profile-photo" src="muriloeu.jpeg" alt="Foto de Murilo Alapenha">
+                    <div class="hero-card-body">
+                        <h2>Murilo Alapenha</h2>
+                        <p>Full-stack Developer focado em web, automação, integrações, dados e sistemas escaláveis.</p>
                     </div>
-                </nav>
-            </div>
-        </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-black via-dark-gray to-black opacity-90"></div>
-        <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                <span class="text-gradient">Alapenha</span><br>
-                <span class="text-light-gray">Soluções em Tecnologia</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-medium-gray mb-8 max-w-2xl mx-auto">
-                Desenvolvimento de Software | Análise de Dados | Automação de Processos
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button onclick="scrollToSection('portfolio')" class="gradient-gold text-black px-8 py-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-gold/30 transition-all">
-                    Ver Portfólio
-                </button>
-                <button onclick="scrollToSection('contact')" class="border-2 border-gold text-gold px-8 py-4 rounded-lg font-semibold hover:bg-gold hover:text-black transition-all">
-                    Entre em Contato
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-dark-gray">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gradient">Sobre Mim</h2>
-                <p class="text-xl text-medium-gray max-w-3xl mx-auto">
-                    Profissional especializado em Desenvolvimento de Software e Administração, com expertise em tecnologia, análise de dados e automação de processos. Desenvolvo soluções digitais inovadoras que combinam programação, infraestrutura robusta e otimização operacional para impulsionar resultados empresariais.
-                </p>
-            </div>
-            <div class="text-center mb-12">
-                <div class="inline-block">
-                    <img src="muriloeu.jpeg" alt="Murilo Alapenha" class="w-48 h-48 rounded-full object-cover border-4 border-gold shadow-lg hover:scale-105 transition-transform duration-300">
-                </div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-black p-8 rounded-lg hover-lift border border-gold/20">
-                    <div class="text-gold text-4xl mb-4"></div>
-                    <h3 class="text-2xl font-bold mb-4 text-gold">Formação</h3>
-                    <p class="text-medium-gray">Bacharelado em Engenharia de Software (USJT) e Administração de Empresas (Anhanguera), com certificações Oracle e múltiplos cursos complementares.</p>
-                </div>
-                <div class="bg-black p-8 rounded-lg hover-lift border border-gold/20">
-                    <div class="text-gold text-4xl mb-4"></div>
-                    <h3 class="text-2xl font-bold mb-4 text-gold">Experiência</h3>
-                    <p class="text-medium-gray">Desenvolvimento de automações, análise de dados, dashboards interativos e gestão de operações digitais com foco em eficiência operacional.</p>
-                </div>
-                <div class="bg-black p-8 rounded-lg hover-lift border border-gold/20">
-                    <div class="text-gold text-4xl mb-4"></div>
-                    <h3 class="text-2xl font-bold mb-4 text-gold">Especialização</h3>
-                    <p class="text-medium-gray">Análise de dados, automação de processos, desenvolvimento de software e integração com ferramentas de IA para soluções inovadoras.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-black">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gradient">Minhas Habilidades</h2>
-                <p class="text-xl text-medium-gray max-w-3xl mx-auto">
-                    Tecnologias e ferramentas que domino para criar soluções eficientes e inovadoras
-                </p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-dark-gray p-8 rounded-lg hover-lift border-l-4 border-gold">
-                    <h3 class="text-2xl font-bold mb-4 text-gold">Linguagens de Programação</h3>
-                    <p class="text-medium-gray mb-4">Desenvolvimento com tecnologias modernas e robustas.</p>
-                    <ul class="text-sm text-light-gray space-y-2">
-                        <li>• Node.js</li>
-                        <li>• React</li>
-                        <li>• TypeScript</li>
-                        <li>• HTML, CSS, JavaScript</li>
-                        <li>• Java (Spring Boot)</li>
-                        <li>• Python</li>
-                    </ul>
-                </div>
-                <div class="bg-dark-gray p-8 rounded-lg hover-lift border-l-4 border-gold">
-                    <h3 class="text-2xl font-bold mb-4 text-gold">Bancos de Dados</h3>
-                    <p class="text-medium-gray mb-4">Gerenciamento e modelagem de dados eficiente.</p>
-                    <ul class="text-sm text-light-gray space-y-2">
-                        <li>• MySQL</li>
-                        <li>• Oracle Database</li>
-                        <li>• PostgreSQL</li>
-                        <li>• MongoDB</li>
-                    </ul>
-                </div>
-                <div class="bg-dark-gray p-8 rounded-lg hover-lift border-l-4 border-gold">
-                    <h3 class="text-2xl font-bold mb-4 text-gold">Análise de Dados</h3>
-                    <p class="text-medium-gray mb-4">Transformação de dados em insights estratégicos.</p>
-                    <ul class="text-sm text-light-gray space-y-2">
-                        <li>• Python (Pandas, NumPy, Matplotlib)</li>
-                        <li>• Power BI</li>
-                        <li>• Excel Avançado</li>
-                    </ul>
-                </div>
-                <div class="bg-dark-gray p-8 rounded-lg hover-lift border-l-4 border-gold">
-                    <h3 class="text-2xl font-bold mb-4 text-gold">Cloud Computing</h3>
-                    <p class="text-medium-gray mb-4">Soluções em nuvem com certificação Oracle.</p>
-                    <ul class="text-sm text-light-gray space-y-2">
-                        <li>• Oracle Cloud Infrastructure</li>
-                        <li>• Certificação OCI Foundations</li>
-                        <li>• Arquitetura em nuvem</li>
-                    </ul>
-                </div>
-                <div class="bg-dark-gray p-8 rounded-lg hover-lift border-l-4 border-gold">
-                    <h3 class="text-2xl font-bold mb-4 text-gold">Automação & IA</h3>
-                    <p class="text-medium-gray mb-4">Automação de processos e integração com IA.</p>
-                    <ul class="text-sm text-light-gray space-y-2">
-                        <li>• Google App Script</li>
-                        <li>• APIs e integrações</li>
-                        <li>• OpenAI, N8n, Texau</li>
-                    </ul>
-                </div>
-                <div class="bg-dark-gray p-8 rounded-lg hover-lift border-l-4 border-gold">
-                    <h3 class="text-2xl font-bold mb-4 text-gold">Ferramentas & Metodologias</h3>
-                    <p class="text-medium-gray mb-4">Versionamento e metodologias ágeis.</p>
-                    <ul class="text-sm text-light-gray space-y-2">
-                        <li>• Git & GitHub</li>
-                        <li>• GitFlow</li>
-                        <li>• CI/CD</li>
-                        <li>• DevOps</li>
-                        <li>• Metodologias Ágeis</li>
-                        <li>• Kanban</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-dark-gray">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gradient">Portfólio</h2>
-                <p class="text-xl text-medium-gray max-w-3xl mx-auto">
-                    Alguns dos projetos que desenvolvi com excelência e inovação
-                </p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-black rounded-lg overflow-hidden hover-lift border border-gold/20">
-                    <div class="h-48 bg-gradient-to-br from-gold to-dark-gold flex items-center justify-center">
-                        <img src="fotositeloop.PNG" alt="Loop Adventure Transportes" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-gold">Loop Adventure Transportes</h3>
-                        <p class="text-medium-gray mb-4">Site institucional para empresa de transporte turístico com design moderno e responsivo.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gold/20 text-gold px-3 py-1 rounded-full text-sm">HTML</span>
-                            <span class="bg-gold/20 text-gold px-3 py-1 rounded-full text-sm">CSS</span>
-                            <span class="bg-gold/20 text-gold px-3 py-1 rounded-full text-sm">JavaScript</span>
+                    <div class="quick-stats">
+                        <div>
+                            <strong>Web</strong>
+                            <span>React, Angular</span>
+                        </div>
+                        <div>
+                            <strong>APIs</strong>
+                            <span>Node, Java</span>
+                        </div>
+                        <div>
+                            <strong>Cloud</strong>
+                            <span>Docker, GCP, Azure</span>
                         </div>
                     </div>
-                </div>
-                <div class="bg-black rounded-lg overflow-hidden hover-lift border border-gold/20">
-                    <div class="h-48 bg-gradient-to-br from-gold to-dark-gold flex items-center justify-center">
-                        <img src="fotomktoyssite.PNG" alt="MK Toys & Antique Leilões" class="w-full h-full object-cover">
+                </aside>
+            </div>
+        </section>
+
+        <section id="sobre">
+            <div class="container about-grid">
+                <div class="about-panel reveal">
+                    <p class="section-kicker">Sobre mim</p>
+                    <h2>Desenvolvimento com contexto de produto, operação e negócio.</h2>
+                    <p>
+                        Crio e evoluo aplicações web, integrações e automações com foco em performance, escalabilidade,
+                        manutenção e clareza. Tenho experiência conectando sistemas, estruturando APIs, criando interfaces
+                        responsivas e transformando processos manuais em fluxos digitais mais confiáveis.
+                    </p>
+                    <div class="specialties" aria-label="Especialidades">
+                        <span class="chip">Full-stack</span>
+                        <span class="chip">APIs e integrações</span>
+                        <span class="chip">Dashboards</span>
+                        <span class="chip">Automação</span>
+                        <span class="chip">Sistemas corporativos</span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-gold">MK Toys & Antique Leilões</h3>
-                        <p class="text-medium-gray mb-4">Plataforma de leilões online para brinquedos e antiguidades com sistema de catálogos e gestão de lotes.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gold/20 text-gold px-3 py-1 rounded-full text-sm">HTML</span>
-                            <span class="bg-gold/20 text-gold px-3 py-1 rounded-full text-sm">CSS</span>
-                            <span class="bg-gold/20 text-gold px-3 py-1 rounded-full text-sm">JavaScript</span>
+                </div>
+
+                <div class="timeline" id="experiencia">
+                    <article class="timeline-item reveal">
+                        <div class="timeline-date">2025 - atual</div>
+                        <div>
+                            <h3>Desenvolvimento full-stack corporativo</h3>
+                            <p>
+                                Criação, manutenção e evolução de sistemas com TypeScript, JavaScript, Node.js, Java,
+                                Spring Boot, React, Angular, Android, APIs REST/SOAP, autenticação JWT e documentação OpenAPI.
+                            </p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    </article>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-black">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gradient">Entre em Contato</h2>
-                <p class="text-xl text-medium-gray max-w-3xl mx-auto">
-                    Pronto para transformar suas ideias em realidade? Vamos conversar sobre seu próximo projeto
-                </p>
-            </div>
-            <div class="text-center max-w-2xl mx-auto">
-                <h3 class="text-2xl font-bold mb-8 text-gold">Informações de Contato</h3>
-                <div class="space-y-6">
-                    <div class="flex items-center justify-center space-x-3">
-                        <p class="text-light-gray font-semibold">WhatsApp:</p>
-                        <a href="https://wa.link/zud52n" target="_blank" class="text-medium-gray hover:text-gold transition-colors">(11) 99477-3671</a>
-                    </div>
-                    <div class="flex items-center justify-center space-x-3">
-                        <p class="text-light-gray font-semibold">Email:</p>
-                        <a href="mailto:alapenhasolucoesemtecltda@gmail.com" class="text-medium-gray hover:text-gold transition-colors">alapenhasolucoesemtecltda@gmail.com</a>
-                    </div>
-                    <div class="flex items-center justify-center space-x-3">
-                        <p class="text-light-gray font-semibold">Localização:</p>
-                        <p class="text-medium-gray">São Paulo, SP - Brasil</p>
-                    </div>
-                    <div class="flex items-center justify-center space-x-3">
-                        <p class="text-light-gray font-semibold">LinkedIn:</p>
-                        <a href="https://www.linkedin.com/in/muriloalapenha" target="_blank" class="text-medium-gray hover:text-gold transition-colors">linkedin.com/in/muriloalapenha</a>
-                    </div>
-                    <div class="flex items-center justify-center space-x-3">
-                        <p class="text-light-gray font-semibold">GitHub:</p>
-                        <a href="https://github.com/Lapenha" target="_blank" class="text-medium-gray hover:text-gold transition-colors">github.com/Lapenha</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <article class="timeline-item reveal">
+                        <div class="timeline-date">2025 - atual</div>
+                        <div>
+                            <h3>Aplicações web, automações e plataformas</h3>
+                            <p>
+                                Desenvolvimento de aplicações escaláveis com Node.js, Express, Python, React e PostgreSQL,
+                                incluindo automações logísticas, integrações, plataformas de leilão, Docker, Azure e OpenAI API.
+                            </p>
+                        </div>
+                    </article>
 
-    <!-- Footer -->
-    <footer class="bg-dark-gray border-t border-gold/20 py-12">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center">
-                <div class="text-3xl font-bold text-gradient mb-4">Alapenha Soluções em Tecnologia</div>
-                <p class="text-medium-gray mb-6">Transformando o futuro através da tecnologia</p>
-                <div class="flex justify-center space-x-6 mb-6">
-                    <a href="https://wa.link/zud52n" target="_blank" class="text-gold hover:text-white transition-colors font-semibold" title="WhatsApp">WhatsApp</a>
-                    <a href="https://www.linkedin.com/in/muriloalapenha" target="_blank" class="text-gold hover:text-white transition-colors font-semibold" title="LinkedIn">LinkedIn</a>
-                    <a href="https://github.com/Lapenha" target="_blank" class="text-gold hover:text-white transition-colors font-semibold" title="GitHub">GitHub</a>
+                    <article class="timeline-item reveal">
+                        <div class="timeline-date">2024 - atual</div>
+                        <div>
+                            <h3>Soluções digitais sob medida</h3>
+                            <p>
+                                Sites, plataformas web, dashboards, protótipos, automações e integrações orientadas por metas,
+                                indicadores claros, documentação objetiva e evolução contínua após a implantação.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <div class="timeline-date">2019 - 2025</div>
+                        <div>
+                            <h3>Operações digitais, dados e marketing</h3>
+                            <p>
+                                Automação de processos com Python e Excel, criação de páginas e interfaces promocionais,
+                                análise de dados, tráfego pago, suporte ao cliente e melhoria de operações online.
+                            </p>
+                        </div>
+                    </article>
                 </div>
-                <p class="text-medium-gray text-sm">© 2024 Alapenha Soluções em Tecnologia LTDA. Todos os direitos reservados.</p>
+            </div>
+        </section>
+
+        <section id="tecnologias">
+            <div class="container">
+                <div class="section-heading center reveal">
+                    <p class="section-kicker">Tecnologias</p>
+                    <h2>Stack separada por área de atuação.</h2>
+                    <p>Ferramentas que uso para construir frontends responsivos, backends robustos, integrações, automações e ambientes de entrega.</p>
+                </div>
+
+                <div class="skills-wrap">
+                    <article class="skill-group reveal">
+                        <h3>Frontend</h3>
+                        <ul class="skill-list">
+                            <li>React</li>
+                            <li>Angular</li>
+                            <li>JavaScript</li>
+                            <li>TypeScript</li>
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>Responsividade</li>
+                            <li>Acessibilidade</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-group reveal">
+                        <h3>Backend</h3>
+                        <ul class="skill-list">
+                            <li>Node.js</li>
+                            <li>Express.js</li>
+                            <li>Java</li>
+                            <li>Spring Boot</li>
+                            <li>Spring Security</li>
+                            <li>Java EE</li>
+                            <li>EJB</li>
+                            <li>JSF</li>
+                            <li>RESTEasy</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-group reveal">
+                        <h3>Mobile</h3>
+                        <ul class="skill-list">
+                            <li>Android</li>
+                            <li>Android Studio</li>
+                            <li>Firebase Admin</li>
+                            <li>Google Maps</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-group reveal">
+                        <h3>APIs e Integrações</h3>
+                        <ul class="skill-list">
+                            <li>REST</li>
+                            <li>SOAP</li>
+                            <li>WSDL</li>
+                            <li>XML</li>
+                            <li>JWT</li>
+                            <li>Swagger</li>
+                            <li>OpenAPI</li>
+                            <li>SharePoint</li>
+                            <li>Protheus</li>
+                            <li>SMTP</li>
+                            <li>FTP/Samba</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-group reveal">
+                        <h3>Bancos e ORM</h3>
+                        <ul class="skill-list">
+                            <li>Oracle</li>
+                            <li>PostgreSQL</li>
+                            <li>MySQL</li>
+                            <li>MongoDB</li>
+                            <li>JPA</li>
+                            <li>Hibernate</li>
+                            <li>Spring Data JPA</li>
+                            <li>Prisma</li>
+                            <li>TypeORM</li>
+                            <li>QueryDSL</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-group reveal">
+                        <h3>Dados e Automação</h3>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>Pandas</li>
+                            <li>NumPy</li>
+                            <li>Excel</li>
+                            <li>Dashboards</li>
+                            <li>OpenAI API</li>
+                            <li>Redis</li>
+                            <li>BullMQ</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-group reveal">
+                        <h3>DevOps e Cloud</h3>
+                        <ul class="skill-list">
+                            <li>Docker</li>
+                            <li>Docker Compose</li>
+                            <li>Nginx</li>
+                            <li>Linux</li>
+                            <li>GCP</li>
+                            <li>Google Cloud Storage</li>
+                            <li>Azure</li>
+                            <li>CI/CD</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-group reveal">
+                        <h3>Qualidade e Gestão</h3>
+                        <ul class="skill-list">
+                            <li>JUnit</li>
+                            <li>Mockito</li>
+                            <li>Jest</li>
+                            <li>ESLint</li>
+                            <li>Prettier</li>
+                            <li>Code review</li>
+                            <li>Jira</li>
+                            <li>Scrum</li>
+                            <li>Kanban</li>
+                            <li>Datadog</li>
+                            <li>JasperReports</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="section-kicker">Projetos reais</p>
+                    <h2>Projetos separados por tipo de solução.</h2>
+                    <p>Sem expor os lugares onde atuo: o foco aqui é o problema resolvido, a stack usada e o resultado técnico.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <article class="project reveal">
+                        <div class="project-media">
+                            <img src="fotositeloop.PNG" alt="Print de site institucional de transporte executivo">
+                            <span class="project-kind">Website</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>Site institucional de transporte executivo</h3>
+                            <p>
+                                Landing page responsiva com identidade visual forte, navegação por seções, chamadas de contato e apresentação clara de serviços.
+                            </p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>UI responsiva</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-media">
+                            <img src="fotomktoyssite.PNG" alt="Print de plataforma web de leilões e antiguidades">
+                            <span class="project-kind">Plataforma</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>Plataforma web de leilões</h3>
+                            <p>
+                                Sistema para catálogo, operação e divulgação de leilões online, com foco em organização de lotes e experiência de compra.
+                            </p>
+                            <div class="project-tags">
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>PostgreSQL</span>
+                                <span>Automação</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-media" aria-hidden="true">
+                            <div class="mockup">
+                                <div class="mockup-bar"></div>
+                                <div class="mockup-grid">
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                </div>
+                                <div class="mockup-line"></div>
+                                <div class="mockup-line"></div>
+                            </div>
+                            <span class="project-kind">Sistema</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>Sistema de gestão de frota e ordens de serviço</h3>
+                            <p>
+                                Aplicação com login, painel administrativo, módulos de clientes, veículos, motoristas, estoque, financeiro, checklists e documentação.
+                            </p>
+                            <div class="project-tags">
+                                <span>Node.js</span>
+                                <span>JWT</span>
+                                <span>Dashboard</span>
+                                <span>PDF</span>
+                                <span>CRUD</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-media" aria-hidden="true">
+                            <div class="mockup">
+                                <div class="mockup-bar"></div>
+                                <div class="mockup-line"></div>
+                                <div class="mockup-line"></div>
+                                <div class="mockup-grid">
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                </div>
+                            </div>
+                            <span class="project-kind">Validador</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>Validador de NF-e para IBS/CBS</h3>
+                            <p>
+                                Ferramenta para validação automática de arquivos XML, leitura de pastas, processamento em lote e apoio à conferência tributária.
+                            </p>
+                            <div class="project-tags">
+                                <span>JavaScript</span>
+                                <span>XML</span>
+                                <span>Automação</span>
+                                <span>Regras fiscais</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-media" aria-hidden="true">
+                            <div class="mockup">
+                                <div class="mockup-bar"></div>
+                                <div class="mockup-grid">
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                </div>
+                                <div class="mockup-line"></div>
+                                <div class="mockup-line"></div>
+                            </div>
+                            <span class="project-kind">Integração</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>Integrações e automações logísticas</h3>
+                            <p>
+                                Fluxos para cálculo de frete, organização operacional, consumo de APIs externas e redução de tarefas manuais repetitivas.
+                            </p>
+                            <div class="project-tags">
+                                <span>Python</span>
+                                <span>Node.js</span>
+                                <span>REST APIs</span>
+                                <span>Pandas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-media" aria-hidden="true">
+                            <div class="mockup">
+                                <div class="mockup-bar"></div>
+                                <div class="mockup-grid">
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                    <div class="mockup-cell"></div>
+                                </div>
+                            </div>
+                            <span class="project-kind">Dados</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>Dashboards e análise operacional</h3>
+                            <p>
+                                Painéis, relatórios e rotinas de análise para transformar dados em indicadores de acompanhamento e tomada de decisão.
+                            </p>
+                            <div class="project-tags">
+                                <span>Python</span>
+                                <span>Excel</span>
+                                <span>PostgreSQL</span>
+                                <span>Relatórios</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contato">
+            <div class="container contact-box reveal">
+                <div>
+                    <p class="section-kicker">Contato</p>
+                    <h2>Vamos construir uma solução com começo, meio e entrega.</h2>
+                    <p>
+                        Posso ajudar com sites, sistemas web, APIs, dashboards, automações, integrações e melhorias em aplicações já existentes.
+                    </p>
+                    <div class="contact-actions">
+                        <a class="btn btn-primary" href="https://wa.link/zud52n" target="_blank" rel="noreferrer">WhatsApp</a>
+                        <a class="btn btn-secondary" href="mailto:alapenhasolucoesemtecltda@gmail.com">Enviar e-mail</a>
+                    </div>
+                </div>
+
+                <div class="contact-list" aria-label="Informações de contato">
+                    <div class="contact-item">
+                        <strong>E-mail</strong>
+                        <a href="mailto:alapenhasolucoesemtecltda@gmail.com">alapenhasolucoesemtecltda@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>WhatsApp</strong>
+                        <a href="https://wa.link/zud52n" target="_blank" rel="noreferrer">(11) 99477-3671</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>LinkedIn</strong>
+                        <a href="https://www.linkedin.com/in/muriloalapenha" target="_blank" rel="noreferrer">linkedin.com/in/muriloalapenha</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>GitHub</strong>
+                        <a href="https://github.com/Lapenha" target="_blank" rel="noreferrer">github.com/Lapenha</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Base</strong>
+                        <span>São Paulo, Brasil · Remoto</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <span>© 2026 Murilo Alapenha. Portfólio full-stack.</span>
+            <div class="footer-links">
+                <a href="#home">Topo</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#contato">Contato</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({
-                behavior: 'smooth'
-            });
+        const header = document.querySelector(".site-header");
+        const menuButton = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelectorAll(".nav-links a");
+        const revealItems = document.querySelectorAll(".reveal");
+
+        function setScrolledHeader() {
+            header.classList.toggle("is-scrolled", window.scrollY > 24);
         }
 
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('mobile-menu');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        const mobileMenuContent = document.getElementById('mobile-menu-content');
-        const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
-
-        function openMobileMenu() {
-            mobileMenuOverlay.classList.remove('hidden');
-            setTimeout(() => {
-                mobileMenuContent.classList.remove('translate-x-full');
-            }, 10);
+        function closeMenu() {
+            document.body.classList.remove("menu-open");
+            menuButton.setAttribute("aria-expanded", "false");
         }
 
-        function closeMobileMenu() {
-            mobileMenuContent.classList.add('translate-x-full');
-            setTimeout(() => {
-                mobileMenuOverlay.classList.add('hidden');
-            }, 300);
-        }
-
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-        closeMobileMenuBtn.addEventListener('click', closeMobileMenu);
-        mobileMenuOverlay.addEventListener('click', function(e) {
-            if (e.target === mobileMenuOverlay) {
-                closeMobileMenu();
-            }
+        menuButton.addEventListener("click", () => {
+            const isOpen = document.body.classList.toggle("menu-open");
+            menuButton.setAttribute("aria-expanded", String(isOpen));
         });
 
-        // Close mobile menu when clicking on menu items
-        document.querySelectorAll('#mobile-menu-overlay a[href^="#"]').forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
+        navLinks.forEach((link) => {
+            link.addEventListener("click", closeMenu);
         });
 
-
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        });
+        }, { threshold: 0.14 });
 
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('bg-black');
-                nav.classList.remove('bg-black/90');
-            } else {
-                nav.classList.add('bg-black/90');
-                nav.classList.remove('bg-black');
-            }
-        });
-        
+        revealItems.forEach((item) => revealObserver.observe(item));
+
+        setScrolledHeader();
+        window.addEventListener("scroll", setScrolledHeader, { passive: true });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96880da281f1cab3',t:'MTc1NDA3OTgwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
